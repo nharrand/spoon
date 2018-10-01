@@ -1,8 +1,12 @@
-package spoon.modelapi;
+package spoon.apimodel;
 
 import spoon.compiler.Environment;
-import spoon.reflect.code.CtReturn;
-import spoon.reflect.declaration.*;
+import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtTypeMember;
+import spoon.reflect.declaration.CtType;
+import spoon.reflect.declaration.CtConstructor;
+import spoon.reflect.declaration.CtMethod;
+import spoon.reflect.declaration.CtField;
 import spoon.reflect.visitor.DefaultJavaPrettyPrinter;
 import spoon.reflect.visitor.PrintingContext;
 import spoon.reflect.visitor.printer.CommentOffset;
@@ -42,7 +46,7 @@ public class APIPrettyPrinter extends DefaultJavaPrettyPrinter {
 	}
 
 
-	public void writeElementList(List<CtTypeMember> elements) {
+	private void writeElementList(List<CtTypeMember> elements) {
 		for (CtTypeMember element : elements) {
 			if (element instanceof CtConstructor && element.isImplicit()
 					|| !element.isPublic()) {
