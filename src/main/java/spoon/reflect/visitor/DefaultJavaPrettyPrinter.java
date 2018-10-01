@@ -190,7 +190,7 @@ public class DefaultJavaPrettyPrinter implements CtVisitor, PrettyPrinter {
 	/**
 	 * Handle imports of classes.
 	 */
-	private ImportScanner importsContext;
+	protected ImportScanner importsContext;
 
 	/**
 	 * Environment which Spoon is executed.
@@ -200,12 +200,12 @@ public class DefaultJavaPrettyPrinter implements CtVisitor, PrettyPrinter {
 	/**
 	 * Token detector, which delegates tokens to {@link TokenWriter}
 	 */
-	private TokenWriter printer;
+	protected TokenWriter printer;
 
 	/**
 	 * Element printer helper.
 	 */
-	private ElementPrinterHelper elementPrinterHelper;
+	protected ElementPrinterHelper elementPrinterHelper;
 
 	/**
 	 * Compilation unit we are printing.
@@ -1618,7 +1618,7 @@ public class DefaultJavaPrettyPrinter implements CtVisitor, PrettyPrinter {
 		exitCtStatement(returnStatement);
 	}
 
-	private <T> void visitCtType(CtType<T> type) {
+	protected <T> void visitCtType(CtType<T> type) {
 		elementPrinterHelper.writeComment(type, CommentOffset.BEFORE);
 		getPrinterHelper().mapLine(type, sourceCompilationUnit);
 		if (type.isTopLevel()) {
@@ -2019,7 +2019,7 @@ public class DefaultJavaPrettyPrinter implements CtVisitor, PrettyPrinter {
 		return this;
 	}
 
-	private PrinterHelper getPrinterHelper() {
+	protected PrinterHelper getPrinterHelper() {
 		return printer.getPrinterHelper();
 	}
 }
